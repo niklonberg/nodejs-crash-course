@@ -17,9 +17,9 @@ const server = http.createServer((req, res) => {
   // res.statusCode = 404; // we can set status codes too
   // the above can be done in one line using the writeHead method
   // res.end("<h1>Hello, World!</h1>");
-  res.writeHead(500, { "Content-Type": "application/json" });
+  res.writeHead(200, { "Content-Type": "text/html" });
 
-  res.end(JSON.stringify({ message: "Server error" }));
+  res.end("<h1>Hello</h1>");
 });
 
 // as it stands, this server variable isnt doing much, we need to listen to it.
