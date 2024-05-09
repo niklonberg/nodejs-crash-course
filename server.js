@@ -1,6 +1,7 @@
 //this will be the new entry point for this application
 import http from "http"; // <-- this import looks a little different, because we are importing something that is included with nodejs
-const PORT = 8000; // <-- we will use process.env variables for this later
+// const PORT = 8000; // <-- we will use process.env variables for this later
+const PORT = process.env.PORT
 
 //create server
 // const server = http.createServer((req, res)=> { // we use the createServer method which takes a function, (does not need to be an arrow function)
