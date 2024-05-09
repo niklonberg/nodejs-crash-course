@@ -14,3 +14,7 @@
 // console.log(`random number is ${genRandomNum()}`);
 // console.log(`0 Celsius to fahrenheit: ${celsiusToFahrenheit(0)}`);
 
+import getPosts, { getPostsLength } from "./postController.js"; // <-- modern module import - note that the file extension is required
+
+console.log(getPosts());
+console.log('length is: ', getPostsLength())
