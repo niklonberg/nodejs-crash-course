@@ -6,10 +6,11 @@
 // console.log(`random number is ${genRandomNum()}`);
 
 //in order to import multiple things, we change what we did above on to this:
-const {
-  genRandomNum,
-  celsiusToFahrenheit,
-} = require("./commonjs-utils-example"); //use object destructuring
+// const {
+//   genRandomNum,
+//   celsiusToFahrenheit,
+// } = require("./commonjs-utils-example"); //use object destructuring
 
-console.log(`random number is ${genRandomNum()}`);
-console.log(`0 Celsius to fahrenheit: ${celsiusToFahrenheit(0)}`);
+// console.log(`random number is ${genRandomNum()}`);
+// console.log(`0 Celsius to fahrenheit: ${celsiusToFahrenheit(0)}`);
+
