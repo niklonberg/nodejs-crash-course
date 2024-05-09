@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/niklonberg/nodejs-crash-course/issues"
   },
-  "homepage": "https://github.com/niklonberg/nodejs-crash-course#readme"
+  "homepage": "https://github.com/niklonberg/nodejs-crash-course#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
 }
