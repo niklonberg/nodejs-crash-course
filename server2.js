@@ -131,6 +131,7 @@ res.user - which would have info on the current user*/
 // building a simple api
 // with an example logger middleware
 import { createServer } from "http";
+import fs from "fs/promises";
 const PORT = process.env.PORT;
 
 const users = [
@@ -141,8 +142,12 @@ const users = [
 ];
 
 // Logger middleware <-- you would import this from another file normally
-const logger = (req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
+const logger = async (req, res, next) => {
+  // console.log(`${req.method} ${req.url}`); previous simple implementation
+  await fs.appendFile(
+    "./activity-log.txt",
+    `Method: ${req.method}, URL: ${req.url}\n\n`
+  );
   next();
 };
 
