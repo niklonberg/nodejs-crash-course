@@ -18,28 +18,49 @@ const PORT = process.env.PORT;
 //   // res.setHeader("Content-Type", "text/html");
 //   // res.statusCode = 404; // we can set status codes too
 //   // the above can be done in one line using the writeHead method
-//   // res.end("<h1>Hello, World!</h1>");
 //   res.writeHead(200, { "Content-Type": "text/html" });
-
 //   res.end("<h1>Hello</h1>");
 // });
 
 //create server
+// const server = http.createServer((req, res) => {
+//   // we can also use the req object, lets log it
+//   console.log(req.url); // logs '/' if on http://localhost:8087/
+//   console.log(req.method); // logs GET
+
+//   // unfortunately, no matter what method or url we use, we are giving the same response back
+//   // when you dont use a framework like express, you need to manually check the url
+//   // in express you could do
+//   // app.post('/users', () => {}) whatever we put inside the function would only run when we made a post request to /users
+//   // i've installed postman, and no matter what method i pick (post, get etc.) i am receiving <h1>Hello</h1> from res.end()
+//   res.writeHead(200, { "Content-Type": "text/html" });
+//   res.end("<h1>Hello</h1>");
+// });
+
+//creating server with simple router
 const server = http.createServer((req, res) => {
-  // we can also use the req object, lets log it
-  console.log(req.url); // logs '/' if on http://localhost:8087/
-  console.log(req.method); // logs GET
-
-  // unfortunately, no matter what method or url we use, we are giving the same response back
-  // when you dont use a framework like express, you need to manually check the url
-  // in express you could do 
-  // app.post('/users', () => {}) whatever we put inside the function would only run when we made a post request to /users
-
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.end("<h1>Hello</h1>");
+  try {
+    //check if get request
+    if (req.method === "GET") {
+      if (req.url === "/") {
+        // we look at url and do something in each case
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end("<h1>Homepage</h1>");
+      } else if (req.url === "/about") {
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end("<h1>About</h1>");
+      } else {
+        res.writeHead(404, { "Content-Type": "text/html" });
+        res.end("<h1>Not found</h1>");
+      }
+    } else { // else throw an error
+      throw new Error("Method not allowed");
+    }
+  } catch (error) { //and if some other type of error happens
+    res.writeHead(500, { "Content-Type": "text/plain" });
+    res.end("Server error");
+  }
 });
-
-
 
 // as it stands, this server variable isnt doing much, we need to listen to it.
 server.listen(PORT, () => {
